@@ -14,7 +14,7 @@ import { Options, Vue } from 'vue-class-component';
     return {
       style: {
         width: `${this.w}px`,
-        height: `${this.h}px`,
+        height: `${this.h}`,
         transform: 'scale(1) translate3d(-50%, -50%, 0)', // 默认不缩放，垂直水平居中
       },
     };
@@ -27,8 +27,8 @@ import { Options, Vue } from 'vue-class-component';
     },
     h: {
       // 设计图尺寸高
-      type: Number,
-      default: 1080,
+      type: String,
+      default: '100%',
     },
   },
   mounted() {
@@ -46,7 +46,7 @@ import { Options, Vue } from 'vue-class-component';
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let timer: any;
       // eslint-disable-next-line func-names
-      return function (this: any) {
+      return function (this: unknown) {
         // eslint-disable-next-line prefer-rest-params
         const args = arguments;
         if (timer) {
@@ -65,9 +65,9 @@ import { Options, Vue } from 'vue-class-component';
     getScale() {
       console.log(window.innerHeight, window.innerWidth, '-----');
       const w = parseFloat((window.innerWidth / this.w).toFixed(5));
-      const h = parseFloat((window.innerHeight / this.h).toFixed(5));
-      console.log(w, h, w < h ? w : h);
-      return w < h ? w : h;
+      // const h = parseFloat((window.innerHeight / this.h).toFixed(5));
+      console.log(w);
+      return w;
     },
     // 设置缩放比例
     setScale() {
@@ -86,10 +86,11 @@ export default class ScreenAdapter extends Vue {}
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
-  background-color: #030a1d;
-  background-image: linear-gradient(to bottom, #0a084b, #010228);
-
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-image: url('../../assets/content-bg/lm.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   .content-wrap {
     position: absolute;
     top: 50%;
