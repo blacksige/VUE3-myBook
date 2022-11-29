@@ -17,7 +17,7 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: rgb(204, 204, 204);
+  text-align: left;
+  color: #333;
 }
 </style>

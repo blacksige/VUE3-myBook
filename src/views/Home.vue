@@ -1,39 +1,25 @@
 <template>
-  <component :is="ScreenAdapter">
+  <ScreenAdapter>
     <div class="content">
       <div class="aside">
-        <component :is="Menu"></component>
+        <Menu></Menu>
       </div>
       <div class="main">
-        <div class="center_box">
-          <img alt="Vue logo" src="../assets/logo.png" />
-        </div>
+        <router-view />
       </div>
     </div>
-  </component>
+  </ScreenAdapter>
 </template>
 
 <script lang="ts" setup>
 // import Hello from '@/components/HelloWorld.vue';
-import Adapter from '@/components/screen-adapter/index.vue';
-import menu from '@/components/menu/index.vue';
-import { ref } from 'vue-demi';
-// const HelloWorld = ref(Hello);
-const ScreenAdapter = ref(Adapter);
-const Menu = ref(menu);
+import ScreenAdapter from '@/layout/screen-adapter/index.vue';
+import Menu from '@/components/menu/index.vue';
 </script>
 
 <style lang="less" scoped>
 .el-container /deep/ {
   height: 100%;
-}
-.el-button--primary /deep/ {
-  border-radius: 50%;
-  width: 65px;
-  height: 65px;
-}
-.el-dropdown + .el-dropdown /deep/ {
-  margin-left: 15px;
 }
 .content {
   width: 100%;
@@ -42,20 +28,11 @@ const Menu = ref(menu);
     position: absolute;
     top: 20px;
     width: 200px;
+    opacity: 0.8;
   }
   .main {
     width: inherit;
     height: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .center_box {
-      width: 400px;
-      padding: 40px;
-      border-radius: 9px;
-      border: #ebe9c3 9px double;
-      background-color: rgba(210, 201, 142, 0.6);
-    }
   }
 }
 </style>
